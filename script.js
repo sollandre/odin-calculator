@@ -6,10 +6,6 @@ const subtract = function(a, b) {
     return a - b;
 };
 
-const sum = function(arr) {
-    return arr.reduce((prev, cur) => prev + cur, 0)
-};
-
 const multiply = function(a, b) {
     return a * b;
 };
@@ -17,6 +13,8 @@ const multiply = function(a, b) {
 const divide = function(a, b) {
     return a/b;
 }
+
+
 
 function executeOperation(operation, first, second){
     switch(operation) {
@@ -37,50 +35,58 @@ function executeOperation(operation, first, second){
     }
 }
 
-let current = '';
-let last = '';
+let firstOperand = '';
+let secOperand = '';
 let operation = '';
+
 const displayCurrent = document.getElementById('current');
-const displayLast = document.getElementById('last');
+const displayOld = document.getElementById('old');
 
 
 const updateDisplay = (value) => {
-    displayCurrent.innerText += value;
+    displayCurrent.textContent == 'ERROR' ? displayCurrent.textContent = value : displayCurrent.textContent += value;
 }
 
-const calculate = (value) => {
-    if(displayCurrent.innerHTML && value !== operation){
+const resetOperands = () => {
+    firstOperand = '';
+    secOperand = '';
+}
 
-        if(displayLast.innerHTML === 'ERROR'){
-            displayLast.innerHTML = '';
-        }
+const calculate = (operator) => {
 
-        if(!last) {
-            last = +displayCurrent.innerHTML;
-            operation = value;
+    if(displayCurrent.textContent && operator !== operation){
+
+        const displayCurrentValue = Number(displayCurrent.textContent);
+        const displayOldValue = displayOld.textContent;
+        
+        //First number and operator input after operands reset
+        if(!firstOperand) {
+            firstOperand = displayCurrentValue;
+            operation = operator;
         }
+        //Subsequent inputs when we already have a history 
         else {
-            current = +displayCurrent.innerHTML;
-            last = executeOperation(operation, last, current);
-            operation = value;
+            secOperand = displayCurrentValue;
+            firstOperand = executeOperation(operation, firstOperand, secOperand);
+            operation = operator;
         }
 
-        if(last === 'ERROR'){
-            current = '';
-            last = '';
+        //Error handling for results of executeOperation
+        if(firstOperand === 'ERROR'){
+            displayCurrent.textContent = 'ERROR';
             operation = '';
-            displayLast.innerHTML = 'ERROR'
-            displayCurrent.innerHTML = '';
+            resetOperands();
         }
-        else if(value === '='){
-            displayLast.innerHTML += current+operation;
-            displayCurrent.innerHTML = last;
-            current = '';
-            last = '';
+        //The '=' operator terminates a chain of operations, handled by a operand reset
+        else if(operator === '='){
+            displayOld.textContent += secOperand+operation;
+            displayCurrent.textContent = firstOperand;
+            resetOperands();
         }
+        //Default behavior for chain of operations
         else{
-            displayLast.innerHTML = last+operation
-            displayCurrent.innerHTML = ''
+            displayOld.textContent = firstOperand+operation
+            displayCurrent.textContent = ''
         }
     }
 }
@@ -94,6 +100,9 @@ function initializeCalc(){
     numbers.forEach((number) => {
             number.addEventListener('click', (e) => updateDisplay(e.target.innerText) )
         })
+
+    document.getElementById('dot').addEventListener('click', (e) => updateDisplay(e.target.innerText) )
+            
 
     operators.forEach( op => {
         op.addEventListener('click', (e) => calculate(e.target.innerText)) 
