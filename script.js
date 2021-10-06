@@ -83,7 +83,7 @@ const calculate = (operator) => {
             displayCurrent.textContent = firstOperand;
             resetOperands();
         }
-        //Default behavior for chain of operations
+        //Default behavior for chain of operations and first input after reset
         else{
             displayOld.textContent = firstOperand+operation
             displayCurrent.textContent = ''
@@ -94,16 +94,13 @@ const calculate = (operator) => {
 
 
 function initializeCalc(){
-    const numbers = document.querySelectorAll('.key.number');
-    const operators = document.querySelectorAll('.operator');
+    const numbers = document.querySelectorAll('.key.number, #dot');
+    const operators = document.querySelectorAll('.key.operator');
 
     numbers.forEach((number) => {
             number.addEventListener('click', (e) => updateDisplay(e.target.innerText) )
         })
-
-    document.getElementById('dot').addEventListener('click', (e) => updateDisplay(e.target.innerText) )
             
-
     operators.forEach( op => {
         op.addEventListener('click', (e) => calculate(e.target.innerText)) 
     }) 
