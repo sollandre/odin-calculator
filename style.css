@@ -1,0 +1,132 @@
+
+* {
+    padding:0;
+    margin:0;
+    vertical-align:baseline;
+    list-style:none;
+    border:0;
+}
+
+html {
+    font-size: 62.5%;
+    height: 100vh;
+    width: 100vw;
+}
+
+body {
+    background-color: #d66b33;
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+    padding: 10rem;
+    padding-left: 5rem;
+    font-family: 'Stick No Bills', sans-serif;
+}
+
+
+#calculator {
+    display: flex;
+    flex-direction: column;
+
+    width:40%;
+}
+
+#display{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 8rem;
+    width: 100%;
+    margin-bottom: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 .1rem black;
+    background-color: #282828;
+    padding:1rem 1rem 0 0;
+}
+
+#current{
+    font-size: 5rem;
+    color: #a1be2f;
+}
+
+#last {
+    font-size: 2rem;
+    color: #a1be2f;
+}
+
+
+#keyboard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1.5rem;
+    align-content: center;
+}
+
+.key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+    width: 100%;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #eb5934;
+    /* border: .1rem solid ; */
+    border-radius: 1.5rem;
+}
+
+.key:hover {
+    transform: scale(0.98);
+    cursor: pointer;
+}
+
+.key.number {
+    background-color: #ece2d0;
+}
+
+.key.operator, .key.special {
+    background-color: #303030;
+}
+
+.saved-element {
+    display: flex;
+    justify-content: space-between;
+}
+
+.action-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 2rem;
+}
+
+.action-wrapper > .action {
+    font-size: 2rem;
+    text-align: center;
+    height: 2rem;
+    background-color: #282828;
+    padding: .15rem .5rem;
+    border-radius: 1rem;
+}
+
+.action-wrapper > .action.load {
+    color: #a1be2f;
+
+}
+
+.action-wrapper > .action.remove {
+    color: #eb5934;
+
+}
+
+.saved-text{
+    font-size: 3rem;
+    color: #a1be2f;
+    background-color: #282828;
+    padding: .5rem 1rem;
+    border-radius: 1rem;
+}
+

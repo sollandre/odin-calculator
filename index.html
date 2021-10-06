@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="script.js" defer></script>
+
+</head>
+<body>
+    <main>
+        <div id="calculator">
+            <div id="display">
+                <div id="last"></div>
+                <div id="current"></div>
+            </div>
+            <div id="keyboard">
+                <div class="key operator"><p>(</p></div>
+                <div class="key operator"><p>)</p></div>
+                <div id="save" class="key special"><p>Save</p></div>
+                <div id="clear" class="key special"><p>AC</p></div>
+                <div class="key number"><p>7</p></div>
+                <div class="key number"><p>8</p></div>
+                <div class="key number"><p>9</p></div>
+                <div class="key operator"><p>/</p></div>
+                <div class="key number"><p>4</p></div>
+                <div class="key number"><p>5</p></div>
+                <div class="key number"><p>6</p></div>
+                <div class="key operator"><p>x</p></div>
+                <div class="key number"><p>1</p></div>
+                <div class="key number"><p>2</p></div>
+                <div class="key number"><p>3</p></div>
+                <div class="key operator"><p>-</p></div>
+                <div class="key number"><p>0</p></div>
+                <div class="key operator"><p>.</p></div>
+                <div class="key operator"><p>=</p></div>
+                <div class="key operator"><p>+</p></div>
+            </div>
+        </div>
+        <div id="save-history">
+            <h1>Saved Results</h1>
+            <ul>
+                <li class="saved-element">
+                    <div class="saved-text">
+                        2 x 64 = 128
+                    </div>
+                    <div class="action-wrapper">
+                        <div class="action load">Load</div>
+                        <div class="action remove">Remove</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>
