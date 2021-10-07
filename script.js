@@ -78,7 +78,8 @@ const calculate = (operator) => {
         //Subsequent inputs of the chain 
         else {
             secOperand = displayCurrentValue;
-            firstOperand = Math.round(executeOperation(operation, firstOperand, secOperand)*1000)/1000;
+            firstOperand = executeOperation(operation, firstOperand, secOperand);
+            firstOperand = typeof firstOperand === 'number' ? Math.round(firstOperand*1000)/1000 : firstOperand; 
             operation = operator;
         }
 
